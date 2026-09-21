@@ -1,3 +1,16 @@
 name = "sveltia-cms-auth"
 main = "src/index.js"
 compatibility_date = "2023-03-24"
+
+# ismetozk.com paneli (/admin) için GitHub girişi.
+#
+# Bu iki değer BURADA duruyor çünkü `wrangler deploy` yalnız bu dosyadaki
+# vars'ı uygular: sadece Cloudflare panelinde tanımlı kalsalardı, worker bir
+# gün yeniden dağıtıldığında silinir ve panel girişi bozulurdu.
+#
+# İkisi de gizli değil: GITHUB_CLIENT_ID zaten OAuth yönlendirmesinde tarayıcı
+# adres çubuğunda görünür. GİZLİ OLAN GITHUB_CLIENT_SECRET'tır ve o BURAYA
+# YAZILMAZ — Cloudflare'de şifreli secret olarak durur (wrangler secret put).
+[vars]
+ALLOWED_DOMAINS = "ismetozk.com"
+GITHUB_CLIENT_ID = "Ov23liT3uSuGrwG5mTQ3"
